@@ -1,9 +1,8 @@
-const { sendEmail } = require("./utils/sendEmail");
-const { readJsonFile } = require("./utils/readJsonFile");
-
-const sendEmails = async () => {
+const { sendEmail } = require("./sendEmail");
+const { readJsonFile } = require("./readJsonFile");
+const sendEmails = async (users) => {
   try {
-    let users = await readJsonFile("data.json");
+    // let users = await readCsvFile("csvdata.csv");
     console.log("===============Start sending emails===============");
     users.map((user) => {
       console.log("Email : ", user.email);
@@ -16,4 +15,4 @@ const sendEmails = async () => {
   }
 };
 
-sendEmails();
+module.exports = { sendEmails };
