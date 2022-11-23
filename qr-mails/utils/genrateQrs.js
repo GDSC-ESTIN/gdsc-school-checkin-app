@@ -7,10 +7,10 @@ const generateQrs = async (users) => {
     QRCode.toFile(`data/images/${users[i].email}.png`, id, {
       scale: 10,
       margin: 2,
-      color: {
-        dark: "#DD3D1B",
-        light: "#ffffff",
-      },
+      // color: {
+      //   dark: "#DD3D1B",
+      //   light: "#ffffff",
+      // },
     });
   }
 };
