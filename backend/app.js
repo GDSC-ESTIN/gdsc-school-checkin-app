@@ -2,8 +2,9 @@ const express = require('express')
 const fs = require("fs")
 const csv = require("csvtojson")
 const converter = require('json-2-csv');
-
+const cors = require("cors")
 const app = express()
+app.use(cors());
 
 app.use(express.json())
 let jsonDB;
@@ -26,30 +27,28 @@ app.post("/api/v1/postData", async (req, res) => {
     try {
         const { id } = req.body
         if (!id) {
-            return res.status(400).send("please provide an ID")
+            return res.status(400).json({ message: "please provide an ID" })
         }
         let found = false
         let person;
         for (let i = 0; i < jsonDB.length; i++) {
-            if(id === jsonDB[i].id) {
+            if (id === jsonDB[i].id) {
                 found = true
-                if(jsonDB[i].checked === "true") {
-                    return res.status(200).send("Already Checked!")
+                if (jsonDB[i].checked === "true") {
+                    return res.status(200).json({ message: "Person allready checked" })
                 }
                 jsonDB[i].checked = "true"
                 person = jsonDB[i]
             }
         }
-        if(!found) {
-            return res.status(404).send("Person not found!")
+        if (!found) {
+            return res.status(404).json({ message: "Person not found!" })
         }
-        await converter.json2csv(jsonDB,(err,csv) => {
-            fs.writeFileSync("./test.csv",csv)
+        await converter.json2csv(jsonDB, (err, csv) => {
+            fs.writeFileSync("./test.csv", csv)
         })
         res.status(200).json({
-            found: found,
-            email: person.email,
-            name: person.name
+            message: `${person.email} : ${person.firstname} ${person.lastname}`
         })
     } catch (error) {
         console.log(error);
