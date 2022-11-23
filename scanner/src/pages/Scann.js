@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import QrReader from 'react-scan-qr'
 
 const url = "https://mouayed-keziz-fictional-bassoon-wjjjw9jjqp4h556p-5000.preview.app.github.dev/api/v1/postData"
@@ -25,7 +25,7 @@ export const Scanner = () => {
       const data = await response.json()
       setClassNameStyle(classNameStyles[[200, 300, 400].indexOf(response.status)])
       setMessage(data.message)
-      console.log(data.message)
+      console.log(data.message, classNameStyle)
     }
   }
   const handleError = (e) => {
