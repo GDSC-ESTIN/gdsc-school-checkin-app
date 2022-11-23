@@ -1,0 +1,11 @@
+packages utilises sont: 
+csvtojson pour converir le fichier csv en json
+json2csv pour convertir le fichier json en csv
+fs pour lire et écrire les fichiers
+
+getJson() : permet de lire le fichier csv et de le convertir en json
+app.get(): permet d'afficher le fichier json
+app.post(): permet de rechercher id d'utilisateur dans le fichier json et de le traiter
+convertToCsv(): permet de convertir le fichier json en csv
+
+Pour lancer le serveur en porte = 9000, il faut taper la commande suivante dans le terminal: npm start 
