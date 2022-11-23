@@ -14,7 +14,7 @@ const sendEmails = async (users) => {
   try {
     console.log("===============Start sending emails===============");
     users.map((user) => {
-      sendRefusedEmail(user);
+      // sendRefusedEmail(user);
       // if (user.domain == "MOTION DESIGNE") {
       //   sendAcceptedMotionEmail(user);
       // } else if (user.domain == `NODE\\EXPRESS JS`) {
@@ -27,7 +27,6 @@ const sendEmails = async (users) => {
       //   sendAcceptedEmail(user);
       // }
     });
-
     console.log("===============Emails Send Successfully===============");
   } catch (err) {
     console.log(err);
@@ -37,9 +36,9 @@ const main = async () => {
   try {
     const csvFilePath = "./data/csvdata.csv";
     let users = await readCsvFile(csvFilePath);
-    users = await generateIds(users);
-    generateQrs(users);
-    sendEmails(users);
+    // // users = await generateIds(users);
+    // // generateQrs(users);
+    // sendEmails(users);
     await saveJsonToCsvFile(users, csvFilePath);
     //save csvdata.csv file in the backend folder to use in the checking
     await saveJsonToCsvFile(users, "../backend/csvdata.csv");

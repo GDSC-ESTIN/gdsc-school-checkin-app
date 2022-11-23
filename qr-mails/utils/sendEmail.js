@@ -26,10 +26,9 @@ const sendAcceptedEmail = (user) => {
   };
   mailTransporter.sendMail(emailContent, (err) => {
     if (err) {
-      console.log("Sending Email error:", err);
-    } else {
-      console.log(`successfully send email to ${userEmail}`);
+      console.log("Sending Email error:", user.email);
     }
+    console.log(`successfully send email to ${user.email}`);
   });
 };
 const sendAcceptedMotionEmail = (user) => {
@@ -47,10 +46,9 @@ const sendAcceptedMotionEmail = (user) => {
   };
   mailTransporter.sendMail(emailContent, (err) => {
     if (err) {
-      console.log("Sending Email error:", err);
-    } else {
-      console.log(`successfully send email to ${userEmail}`);
+      console.log("Sending Email error:", user.email);
     }
+    console.log(`successfully send email to ${user.email}`);
   });
 };
 
@@ -69,10 +67,9 @@ const sendAcceptedBackendEmail = (user) => {
   };
   mailTransporter.sendMail(emailContent, (err) => {
     if (err) {
-      console.log("Sending Email error:", err);
-    } else {
-      console.log(`successfully send email to ${userEmail}`);
+      console.log("Sending Email error:", user.email);
     }
+    console.log(`successfully send email to ${user.email}`);
   });
 };
 
@@ -91,10 +88,9 @@ const sendAccepted3DEmail = (user) => {
   };
   mailTransporter.sendMail(emailContent, (err) => {
     if (err) {
-      console.log("Sending Email error:", err);
-    } else {
-      console.log(`successfully send email to ${userEmail}`);
+      console.log("Sending Email error:", user.email);
     }
+    console.log(`successfully send email to ${user.email}`);
   });
 };
 const sendAcceptedGraphicEmail = (user) => {
@@ -112,10 +108,9 @@ const sendAcceptedGraphicEmail = (user) => {
   };
   mailTransporter.sendMail(emailContent, (err) => {
     if (err) {
-      console.log("Sending Email error:", err);
-    } else {
-      console.log(`successfully send email to ${userEmail}`);
+      console.log("Sending Email error:", user.email);
     }
+    console.log(`successfully send email to ${user.email}`);
   });
 };
 
@@ -128,10 +123,9 @@ const sendRefusedEmail = (user) => {
   };
   mailTransporter.sendMail(emailContent, (err) => {
     if (err) {
-      console.log("Sending Email error:", err);
-    } else {
-      console.log(`successfully send email to ${userEmail}`);
+      console.log("Sending Email error:", user.email);
     }
+    console.log(`successfully send email to ${user.email}`);
   });
 };
 
