@@ -76,6 +76,49 @@ const sendAcceptedBackendEmail = (user) => {
   });
 };
 
+const sendAccepted3DEmail = (user) => {
+  let emailContent = {
+    from: GMAIL_USER,
+    to: user.email,
+    subject: "[GDSC-SCHOOL workshop]",
+    html: emailTemplates.accepted3DTemplate(user),
+    attachments: [
+      {
+        filename: `${user.email}.png`,
+        path: path.join(__dirname, "..", "data", "images", `${user.email}.png`),
+      },
+    ],
+  };
+  mailTransporter.sendMail(emailContent, (err) => {
+    if (err) {
+      console.log("Sending Email error:", err);
+    } else {
+      console.log(`successfully send email to ${userEmail}`);
+    }
+  });
+};
+const sendAcceptedGraphicEmail = (user) => {
+  let emailContent = {
+    from: GMAIL_USER,
+    to: user.email,
+    subject: "[GDSC-SCHOOL workshop]",
+    html: emailTemplates.acceptedGraphicTemplate(user),
+    attachments: [
+      {
+        filename: `${user.email}.png`,
+        path: path.join(__dirname, "..", "data", "images", `${user.email}.png`),
+      },
+    ],
+  };
+  mailTransporter.sendMail(emailContent, (err) => {
+    if (err) {
+      console.log("Sending Email error:", err);
+    } else {
+      console.log(`successfully send email to ${userEmail}`);
+    }
+  });
+};
+
 const sendRefusedEmail = (user) => {
   let emailContent = {
     from: GMAIL_USER,
@@ -97,4 +140,6 @@ module.exports = {
   sendRefusedEmail,
   sendAcceptedMotionEmail,
   sendAcceptedBackendEmail,
+  sendAccepted3DEmail,
+  sendAcceptedGraphicEmail,
 };

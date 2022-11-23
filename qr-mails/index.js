@@ -1,16 +1,31 @@
 const { readCsvFile, saveJsonToCsvFile } = require("./utils/csvTojson.js");
-const { sendAcceptedEmail, sendRefusedEmail } = require("./utils/sendEmail");
+const {
+  sendAcceptedEmail,
+  sendRefusedEmail,
+  sendAccepted3DEmail,
+  sendAcceptedMotionEmail,
+  sendAcceptedBackendEmail,
+  sendAcceptedGraphicEmail,
+} = require("./utils/sendEmail");
 const { generateIds } = require("./utils/generateId");
 const { generateQrs } = require("./utils/genrateQrs");
 
 const sendEmails = async (users) => {
   try {
-    // let users = await readCsvFile("./data/csvdata.csv");
     console.log("===============Start sending emails===============");
     users.map((user) => {
-      console.log("Email : ", user.email);
-      // sendAcceptedEmail(user);
       sendRefusedEmail(user);
+      // if (user.domain == "MOTION DESIGNE") {
+      //   sendAcceptedMotionEmail(user);
+      // } else if (user.domain == `NODE\\EXPRESS JS`) {
+      //   sendAcceptedBackendEmail(user);
+      // } else if (user.domain == "3D DESIGN") {
+      //   sendAccepted3DEmail(user);
+      // } else if (user.domain == "GRAPHIC DESIGN") {
+      //   sendAcceptedGraphicEmail(user);
+      // } else {
+      //   sendAcceptedEmail(user);
+      // }
     });
 
     console.log("===============Emails Send Successfully===============");
@@ -22,8 +37,8 @@ const main = async () => {
   try {
     const csvFilePath = "./data/csvdata.csv";
     let users = await readCsvFile(csvFilePath);
-    // users = await generateIds(users);
-    // generateQrs(users);
+    users = await generateIds(users);
+    generateQrs(users);
     sendEmails(users);
     await saveJsonToCsvFile(users, csvFilePath);
     //save csvdata.csv file in the backend folder to use in the checking
@@ -33,4 +48,4 @@ const main = async () => {
   }
 };
 
-main();
+// main();

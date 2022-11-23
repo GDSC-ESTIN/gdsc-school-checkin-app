@@ -4,10 +4,17 @@ let acceptedTemplate = (user) => {
   return ``;
 };
 
+let accepted3DTemplate = (user) => {
+  return ``;
+};
+
 let acceptedBackendTemplate = (user) => {
   return ``;
 };
 let acceptedMotionTemplate = (user) => {
+  return ``;
+};
+let acceptedGraphicTemplate = (user) => {
   return ``;
 };
 let refusedTemplate = (user) => {
@@ -205,4 +212,6 @@ module.exports = {
   acceptedBackendTemplate,
   acceptedMotionTemplate,
   refusedTemplate,
+  accepted3DTemplate,
+  acceptedGraphicTemplate,
 };
