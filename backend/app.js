@@ -48,7 +48,11 @@ app.post("/api/v1/postData", async (req, res) => {
             fs.writeFileSync("./DB.csv", csv)
         })
         res.status(200).json({
-            message: `${person.email} : ${person.firstname} ${person.lastname}`
+            email: person.email,
+            firstname: person.firstname,
+            lastname: person.lastname,
+            workshop: person.domain,
+            message: `${person.email} : ${person.firstname} ${person.lastname} ${person.domain}`
         })
     } catch (error) {
         console.log(error);

@@ -6,13 +6,9 @@ const url = "http://127.0.0.1:5000/api/v1/postData"
 
 
 export const Scanner = () => {
-  const classNameStyles = ['okclass', '300class', '400class']
-  const [id, setId] = useState('')
-  const [message, setMessage] = useState('')
-  const [classNameStyle, setClassNameStyle] = useState('')
+  const classNameStyles = ['accepted', 'already-accepted', 'not-accepted']
   const handleScann = async (e) => {
     if (e) {
-      setId(e)
       const response = await fetch(url, {
         method: 'POST',
         headers: {
@@ -23,11 +19,8 @@ export const Scanner = () => {
         })
       });
       const data = await response.json()
+      console.table({ ...data, status: response.status });
       setClassNameStyle(classNameStyles[[200, 300, 404].indexOf(response.status)])
-      setMessage(data.message)
-      console.log(data.message)
-      console.log(response.status)
-      console.log(classNameStyle)
     }
   }
   const handleError = (e) => {
@@ -37,10 +30,8 @@ export const Scanner = () => {
     <div>
       <QrReader onScan={handleScann} onError={handleError} delay={500} style={{ width: '500px' }} showViewFinder={false}></QrReader>
       <div>
-        {message}
       </div>
       <div>
-        {id}
       </div>
     </div>
 
