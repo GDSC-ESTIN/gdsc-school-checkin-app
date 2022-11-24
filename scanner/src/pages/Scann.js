@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import QrReader from 'react-scan-qr'
 
-const url = "https://mouayed-keziz-fictional-bassoon-wjjjw9jjqp4h556p-5000.preview.app.github.dev/api/v1/postData"
+const url = "http://127.0.0.1:5000/api/v1/postData"
 
 
 
@@ -23,9 +23,11 @@ export const Scanner = () => {
         })
       });
       const data = await response.json()
-      setClassNameStyle(classNameStyles[[200, 300, 400].indexOf(response.status)])
+      setClassNameStyle(classNameStyles[[200, 300, 404].indexOf(response.status)])
       setMessage(data.message)
-      console.log(data.message, classNameStyle)
+      console.log(data.message)
+      console.log(response.status)
+      console.log(classNameStyle)
     }
   }
   const handleError = (e) => {
